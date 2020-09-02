@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mekan Cafe</title>
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+</head>
+
+<body>
+  <div class="register">
+    <div class="logo">
+      <h1 class="logo_text">MEKAN</h1>
+    </div>
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="register_input">
+          <label>{{field.label}}:</label>
+          {{field}}
+        </div>
+      {% endfor %}
+      <div class="register_submit">
+        <input class="green_button" type="submit" value="Register">
+      </div>
+      <div class="login_register_div">
+        Already have an account? <a href="{% url 'login' %}">Login</a>
+      </div>
+      <div class="login_register_div">
+        {% for message in messages %}
+          <li>{{message}}</li>
+        {% endfor %}
+      </div>
+    </form>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@700&display=swap');
+
+:root {
+  --background-color:#F7F7FF;
+  --primary-color: #BF0603;
+  --secondary-color: #001427;
+  --tertiary-color: #8D0801;
+  --alt-color1: #F4D58D;
+  --alt-color2: #708D81;
+  --alt-color3: #0353A4;
+  --order-button: #4ea02d;
+  --order-button-active: #317415;
+};
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background: var(--background-color);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  margin: 0px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10%;
+  background: var(--primary-color);
+}
+
+h1 {
+  color: black;
+}
+
+h2 {
+  color: black;
+  text-align: center;
+}
+
+.logo {
+  width: 228px;
+  background: var(--secondary-color);
+  padding: 15px 10px;
+  letter-spacing: 15px;
+  text-indent: 15px;
+  text-decoration: none;
+  font-size: 20px;
+  border: 3px solid var(--secondary-color);
+  border-radius: 20px;
+}
+
+.logo_text {
+  margin: 0px;
+  font-family: 'PT Sans Caption';
+  color: var(--primary-color);
+}
+
+nav {
+  margin-left: 5px;
+}
+
+.nav_link {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--background-color);
+  color: black;
+  margin: 10px;
+  padding: 6px 10px;
+  font-size: 17px;
+  font-weight: bold;
+  width: 100px;
+  border-radius: 15px;
+  transition: all 0.4s;
+  border: 1px solid black;
+}
+
+.nav_link:hover {
+  background: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.product {
+  border: 3px solid black;
+  border-radius: 30px;
+  height: 565px;
+  /* width: 320px; */
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  margin: 10px;
+  transition: box-shadow 0.15s;
+}
+
+.product:hover {
+  box-shadow: 0px 0px 5px 1px var(--secondary-color);
+}
+
+.product #id_ingredients {
+  padding: 0px;
+  list-style: none;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  width: min(100%, 1440px);
+  margin: auto;
+}
+
+.product_description {
+  line-height: 1.5em;
+  height: 3em;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.order_button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  background: var(--order-button);
+  color: var(--background-color);
+  margin: 10px;
+  padding: 6px 10px;
+  font-size: 17px;
+  width: 100px;
+  border-radius: 15px;
+  transition: all 0.4s;
+  border: 1px solid black;
+}
+
+.product:hover .order_button {
+  background: var(--order-button-active);
+}
+
+.green_button {
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  background: var(--order-button);
+  color: var(--background-color);
+  margin: 10px;
+  padding: 6px 10px;
+  font-size: 17px;
+  border-radius: 15px;
+  transition: all 0.4s;
+  border: 1px solid black;
+}
+
+.green_button:hover {
+  cursor: pointer;
+  background: var(--order-button-active);
+}
+
+.price_tag {
+  font-size: 24px;
+}
+
+.register {
+  border: 3px solid black;
+  border-radius: 30px;
+  color: black;
+  width: 380px;
+  transition: box-shadow 0.15s;
+  margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.register .logo {
+  margin: 20px auto;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.register_input {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px;
+}
+
+.register_submit {
+  display: flex;
+  justify-content: center;
+}
+
+.login_register_div {
+  margin: 10px;
+}
+
+.items_count {
+  position: absolute;
+  width: 20px;
+  transform: translate(95px, -32px);
+  padding: 3px;
+  box-shadow: -2px 1px 5px -3px var(--secondary-color);
+  border: 1px solid black;
+  border-radius: 15px;
+  background: white;
+  text-align: center;
+  color: black;
+}

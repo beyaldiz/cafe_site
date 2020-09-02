@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block main %}
+  <div class="product">
+    <h3>{{product.title}}</h3>
+    <img width="300" src="{{product.picture.url}}" alt="{{product.title}}" />
+    <br>
+    <br>
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      <input class="green_button" type="submit" value="Add to cart">
+    </form>
+  </div>
+  <div class="login_register_div">
+    {% for message in messages %}
+      <li>{{message}}</li>
+    {% endfor %}
+  </div>
+{% endblock %}
