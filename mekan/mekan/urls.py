@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from products.views import home_view 
-from order.views import item_view, cart_view
+from order.views import item_view, cart_view, delete_item, place_order
 from customer.views import user_register_view, user_login_view, user_logout, customer_view
 
 urlpatterns = [
@@ -30,7 +30,9 @@ urlpatterns = [
     path('login', user_login_view, name = 'login'),
     path('logout', user_logout, name = 'logout'),
     path('cart', cart_view, name = 'cart'),
-    path('customer', customer_view, name = 'customer_view')
+    path('customer', customer_view, name = 'customer'),
+    path('delete_item/<int:pk>', delete_item, name = 'delete_item'),
+    path('place_order', place_order, name = 'place_order'),
 ]
 
 if settings.DEBUG:

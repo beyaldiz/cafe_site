@@ -2,5 +2,8 @@
 {% load static %}
 
 {% block main %}
-  {{form.as_p}}
+<form method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input class="green_button" type="submit" value="Save">
 {% endblock %}

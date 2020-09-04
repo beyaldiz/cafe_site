@@ -3,7 +3,6 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 from .models import Customer
-from phonenumber_field.formfields import PhoneNumberField
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required = True)
@@ -14,8 +13,13 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
 class CustomerInfoForm(forms.ModelForm):
-    phone_number = PhoneNumberField(required = True)
-    address = forms.CharField(required = True)
+    phone_number = forms.CharField(
+        required = True,
+        max_length = 10,
+        min_length = 10,
+        widget = forms.TextInput(attrs = {'type': 'tel', 'pattern': '[0-9]{10}', 'placeholder': 'ex. 5554443322', 'maxlength': '10'})
+    )
+    address = forms.CharField(required = True, max_length = 400)
     class Meta:
         model = Customer
         fields = ['phone_number', 'address']

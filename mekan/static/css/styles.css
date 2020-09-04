@@ -161,6 +161,25 @@ nav {
   background: var(--order-button-active);
 }
 
+.red_button {
+  display: inline-block;
+  outline: none;
+  text-align: center;
+  background: var(--order-button);
+  color: var(--background-color);
+  margin: 10px;
+  padding: 6px 10px;
+  font-size: 17px;
+  border-radius: 15px;
+  transition: all 0.4s;
+  border: 1px solid black;
+}
+
+.red_button:hover {
+  cursor: pointer;
+  background: var(--order-button-active);
+}
+
 .price_tag {
   font-size: 24px;
 }

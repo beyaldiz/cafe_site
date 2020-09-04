@@ -1,6 +1,6 @@
 from django import forms
 from products.models import Product, Ingredient
-from order.models import Item
+from order.models import Item, Order
 
 class ItemForm(forms.ModelForm):
     class Meta:

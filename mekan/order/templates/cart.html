@@ -4,17 +4,35 @@
 {% block main %}
   <br>
   <h2>Cart</h2>
-  <div class="products">
+  <table>
     {% for item in items %}
-      {{item.product}}
-      <br>
-      {% for ingredient in item.ingredients.all %}
-        {{ingredient}}
-      {% endfor %}
-      <br>
-      {{item.quantity}} X {{item.product.price}}
-      <br>
+      <tr>
+        <td>
+          {{item.product}}
+          <br>
+          {% for ingredient in item.ingredients.all %}
+            <li>{{ingredient}}</li>
+          {% endfor %}
+        </td>
+        <td>{{item.quantity}} X {{item.product.price}} ₺</td>
+        <td>
+          <form action="{% url 'delete_item' item.id %}" method="POST">
+            {% csrf_token %}
+            <input class="red_button" type="submit" value="Delete">
+          </form>
+        </td>
+      </tr>
     {% endfor %}
-    {{total_price}}
-  </div>
+    <tr>
+      <td>{{total_price}} ₺</td>
+    </tr>
+    <tr>
+      <td>
+        <form action="{% url 'place_order' %}" method="POST">
+          {% csrf_token %}
+          <input class="green_button" type="submit" value="Place order!">
+        </form>
+      </td>
+    </tr>
+  </table>
 {% endblock %}

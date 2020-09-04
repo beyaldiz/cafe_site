@@ -46,5 +46,12 @@ def user_logout(request):
     return redirect('home')
 
 def customer_view(request):
-    form = CustomerInfoForm()
-    return render(request, 'customer.html',{'form': form})
+    customer = Customer.objects.filter(user = request.user)[0]
+
+    if request.method == 'POST':
+        form = CustomerInfoForm(request.POST, instance = customer)
+        if form.is_valid():
+            form.save()
+
+    form = CustomerInfoForm(instance = customer)
+    return render(request, 'customer.html', {'form': form})

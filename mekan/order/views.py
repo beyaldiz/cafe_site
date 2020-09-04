@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import Http404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -55,3 +55,21 @@ def cart_view(request):
         context['total_price'] = total_price
     context['items_count'] = item_count(request)
     return render(request, 'cart.html', context)
+
+@login_required(login_url = 'login')
+def delete_item(request, pk):
+    if request.method == "POST":
+        item = Item.objects.get(id = pk)
+        if item.order.customer.user == request.user:
+            item.delete()
+    return redirect('cart')
+
+@login_required(login_url = 'login')
+def place_order(request):
+    if request.method == "POST":
+        order_queryset = Order.objects.filter(customer = request.user.customer, status = OrderStatus.objects.get(status = 'on_cart'))
+        if order_queryset.count() != 0:
+            order = Order.objects.get(id = order_queryset[0].id)
+            order.status = OrderStatus.objects.filter(status = 'placed')[0]
+            order.save()
+    return redirect('customer')
